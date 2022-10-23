@@ -2,16 +2,6 @@ import 'package:flutter/material.dart';
 
 /// A progress bar with rounded corners and custom colors.
 class ProwessProgress extends StatefulWidget {
-  const ProwessProgress(
-      {@required this.progress,
-      Key key,
-      this.color,
-      this.background = const Color.fromRGBO(0, 0, 0, 0.06),
-      this.height = 7,
-      this.borderRadius,
-      this.innerPadding = const EdgeInsets.all(0)})
-      : super(key: key);
-
   final double progress;
   final Color background;
   final Color color;
@@ -19,14 +9,22 @@ class ProwessProgress extends StatefulWidget {
   final EdgeInsets innerPadding;
   final BorderRadius borderRadius;
 
+  const ProwessProgress(
+      {required this.progress,
+      required this.color,
+      required this.borderRadius,
+      this.background = const Color.fromRGBO(0, 0, 0, 0.06),
+      this.height = 7,
+      this.innerPadding = const EdgeInsets.all(0)});
+
   @override
   _ProwessProgressState createState() => _ProwessProgressState();
 }
 
 class _ProwessProgressState extends State<ProwessProgress>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> _progressTween;
+  late AnimationController _animationController;
+  late Animation<double> _progressTween;
 
   @override
   void initState() {
@@ -71,17 +69,16 @@ class _ProwessProgressState extends State<ProwessProgress>
           AnimatedBuilder(
             animation: _animationController,
             builder: (context, child) => FractionallySizedBox(
-                  widthFactor: _progressTween.value,
-                  child: Padding(
-                    padding: widget.innerPadding,
-                    child: Container(
-                      height: widget.height,
-                      decoration: BoxDecoration(
-                          color: widget.color,
-                          borderRadius: widget.borderRadius),
-                    ),
-                  ),
+              widthFactor: _progressTween.value,
+              child: Padding(
+                padding: widget.innerPadding,
+                child: Container(
+                  height: widget.height,
+                  decoration: BoxDecoration(
+                      color: widget.color, borderRadius: widget.borderRadius),
                 ),
+              ),
+            ),
           )
         ],
       ),

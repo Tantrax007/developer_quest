@@ -22,13 +22,12 @@ class WorkListItem extends StatelessWidget {
   final WorkItem workItem;
   final HandleTapCallback handleTap;
 
-  const WorkListItem({
-    this.workItem,
-    this.isExpanded = true,
-    this.heading,
-    this.progressColor,
-    this.handleTap,
-  });
+  const WorkListItem(
+      {required this.workItem,
+      required this.heading,
+      required this.progressColor,
+      required this.handleTap,
+      this.isExpanded = true});
 
   BoxDecoration get workListItemDecoration => BoxDecoration(
         boxShadow: [
@@ -44,18 +43,18 @@ class WorkListItem extends StatelessWidget {
       );
 
   Future<void> _handleTap(BuildContext context, WorkItem workItem) async {
-    if ((handleTap != null && handleTap()) || workItem.isComplete) {
+    if (handleTap() || workItem.isComplete) {
       return;
     }
 
-    var characters = await showModalBottomSheet<Set<Character>>(
+    Set<Character>? characters = await showModalBottomSheet<Set<Character>>(
       context: context,
       builder: (context) => TeamPickerModal(workItem),
     );
     _onAssigned(workItem, characters);
   }
 
-  void _onAssigned(WorkItem workItem, Set<Character> value) {
+  void _onAssigned(WorkItem workItem, Set<Character>? value) {
     if (value == null) return;
     if (workItem.isComplete) return;
     workItem.assignTeam(value.toList());
@@ -117,15 +116,15 @@ class WorkListItem extends StatelessWidget {
 }
 
 class TeamProgressIndicator extends StatelessWidget {
-  const TeamProgressIndicator({
-    this.workItem,
-    this.isExpanded,
-    this.progressColor,
-  });
-
   final WorkItem workItem;
   final bool isExpanded;
   final Color progressColor;
+
+  const TeamProgressIndicator({
+    required this.workItem,
+    required this.isExpanded,
+    required this.progressColor,
+  });
 
   @override
   Widget build(BuildContext context) {

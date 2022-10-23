@@ -12,20 +12,18 @@ typedef RpgLayoutWidgetBuilder = Widget Function(
 
 /// Builds a widget tree that can depend on the parent widget's width
 class RpgLayoutBuilder extends StatelessWidget {
-  const RpgLayoutBuilder({
-    @required this.builder,
-    Key key,
-  })  : assert(builder != null),
-        super(key: key);
-
   /// Builds the widgets below this widget given this widget's layout width.
   final RpgLayoutWidgetBuilder builder;
+
+  const RpgLayoutBuilder({required this.builder});
 
   Widget _build(BuildContext context, BoxConstraints constraints) {
     var mediaWidth = MediaQuery.of(context).size.width;
     final RpgLayout layout = mediaWidth >= ultraWideLayoutThreshold
         ? RpgLayout.ultrawide
-        : mediaWidth > wideLayoutThreshold ? RpgLayout.wide : RpgLayout.slim;
+        : mediaWidth > wideLayoutThreshold
+            ? RpgLayout.wide
+            : RpgLayout.slim;
     return builder(context, layout);
   }
 

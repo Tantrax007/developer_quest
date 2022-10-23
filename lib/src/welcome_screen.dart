@@ -6,7 +6,6 @@ import 'package:dev_rpg/src/shared_state/game/world.dart';
 import 'package:dev_rpg/src/style.dart';
 import 'package:dev_rpg/src/widgets/buttons/welcome_button.dart';
 import 'package:dev_rpg/src/widgets/flare/start_screen_hero.dart';
-import 'package:dev_rpg/src/widgets/flare/warmup_flare.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -21,8 +20,6 @@ const double _horizontalPadding = 33;
 class _WelcomeScreenState extends State<WelcomeScreen> {
   late CharacterStyle hero;
   late Timer _swapHeroTimer;
-  final Timer _warmupTimer =
-      Timer(const Duration(milliseconds: 1500), warmupFlare);
   @override
   void initState() {
     _chooseHero();
@@ -46,7 +43,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void dispose() {
     super.dispose();
     _swapHeroTimer.cancel();
-    _warmupTimer.cancel();
   }
 
   Future<void> _pressStartGame() async {
@@ -107,7 +103,8 @@ class _WelcomeScreenSlim extends StatelessWidget {
   final CharacterStyle hero;
   final VoidCallback start;
   final VoidCallback about;
-  const _WelcomeScreenSlim(this.hero, {this.start, this.about});
+  const _WelcomeScreenSlim(this.hero,
+      {required this.start, required this.about});
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +195,8 @@ class _WelcomeScreenWide extends StatelessWidget {
   final VoidCallback start;
   final VoidCallback about;
   final CharacterStyle hero;
-  const _WelcomeScreenWide(this.hero, {this.start, this.about});
+  const _WelcomeScreenWide(this.hero,
+      {required this.start, required this.about});
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

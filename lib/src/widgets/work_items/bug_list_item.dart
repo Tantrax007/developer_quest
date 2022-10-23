@@ -16,6 +16,7 @@ class BugListItem extends StatelessWidget {
       workItem: bug,
       isExpanded: bug.isBeingWorkedOn,
       progressColor: bugColor,
+      handleTap: () => false,
       heading: !bug.isComplete
           ? BugHeader(bug)
           : const Icon(Icons.bug_report, color: disabledColor),

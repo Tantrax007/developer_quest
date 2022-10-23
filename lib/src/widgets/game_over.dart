@@ -1,5 +1,4 @@
 import 'package:dev_rpg/src/shared_state/game/world.dart';
-import 'package:flare_dart/math/mat2d.dart';
 import 'package:flare_flutter/flare.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flare_flutter/flare_controller.dart';
@@ -28,7 +27,7 @@ class _MixStarValueController extends FlareController {
 
   @override
   void initialize(FlutterActorArtboard artboard) {
-    ActorAnimation starsAnimation = artboard.getAnimation(stars.toString());
+    ActorAnimation? starsAnimation = artboard.getAnimation(stars.toString());
     starsAnimation?.apply(0, artboard, 1);
   }
 
@@ -44,7 +43,7 @@ class GameOver extends StatefulWidget {
 }
 
 class _GameOverState extends State<GameOver> {
-  _MixStarValueController _starController;
+  late _MixStarValueController _starController;
   @override
   void initState() {
     _starController =
@@ -67,7 +66,8 @@ class _GameOverState extends State<GameOver> {
   @override
   Widget build(BuildContext context) {
     var stars = widget.world.company.starRating;
-    assert(stars > 0 && stars <= 4, 'Stars must be between 0 and 5.');
+    assert(stars > 0 && stars <= 4,
+        'Las estrellas tienen que estar entre 0 y 5 nobato');
 
     var successMessage = _starGreeting[stars];
 
@@ -104,7 +104,11 @@ class _GameOverState extends State<GameOver> {
                         child: FlareActor('assets/flare/Joy.flr',
                             animation: stars < 2
                                 ? 'sad'
-                                : stars < 3 ? 'neutral' : 'happy'),
+                                : stars < 3
+                                    ? 'neutral'
+                                    : stars < 4
+                                        ? 'happy'
+                                        : 'entusiasm'),
                       ),
                     ),
                   ),

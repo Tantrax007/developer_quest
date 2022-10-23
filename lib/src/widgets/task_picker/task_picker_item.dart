@@ -17,11 +17,11 @@ class TaskPickerItem extends StatelessWidget {
   final TaskDisplay display;
 
   const TaskPickerItem({
-    this.blueprint,
+    required this.blueprint,
+    required this.lines,
+    required this.display,
     this.hasNextSibling = false,
     this.hasNextChild = false,
-    this.lines,
-    this.display,
   });
 
   static const double _height = 95;

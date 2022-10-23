@@ -25,10 +25,15 @@ class GameScreenSlimState extends State<GameScreenSlim> {
 
   GameScreenSlimState() {
     _controller.addListener(() {
-      if (_controller.page.round() != _index) {
-        setState(() {
-          _index = _controller.page.round();
-        });
+      if (_controller.page == null) {
+        print('_controller.page es nulo');
+        return;
+      } else {
+        if (_controller.page!.round() != _index) {
+          setState(() {
+            _index = _controller.page!.round();
+          });
+        }
       }
     });
   }
@@ -57,9 +62,9 @@ class GameScreenSlimState extends State<GameScreenSlim> {
             // changes frequently.
             return RepaintBoundary(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: Border(
-                    top: const BorderSide(
+                    top: BorderSide(
                       color: statsSeparatorColor,
                       style: BorderStyle.solid,
                     ),
@@ -83,14 +88,14 @@ class GameScreenSlimState extends State<GameScreenSlim> {
         children: [
           Consumer<CharacterPool>(
             builder: (context, characterPool, child) => _BottomNavigationButton(
-                  'assets/flare/TeamIcon.flr',
-                  label: 'Team',
-                  tap: () => _showPageIndex(0),
-                  isSelected: _index == 0,
-                  hasNotification: characterPool.isUpgradeAvailable,
-                  iconSize: const Size(25, 29),
-                  padding: const EdgeInsets.only(top: 10),
-                ),
+              'assets/flare/TeamIcon.flr',
+              label: 'Team',
+              tap: () => _showPageIndex(0),
+              isSelected: _index == 0,
+              hasNotification: characterPool.isUpgradeAvailable,
+              iconSize: const Size(25, 29),
+              padding: const EdgeInsets.only(top: 10),
+            ),
           ),
           _BottomNavigationButton(
             'assets/flare/TasksIcon.flr',
@@ -123,12 +128,12 @@ class _BottomNavigationButton extends StatefulWidget {
   final String label;
 
   const _BottomNavigationButton(this.flare,
-      {this.isSelected = false,
+      {required this.tap,
+      required this.label,
+      this.isSelected = false,
       this.hasNotification = false,
       this.padding = const EdgeInsets.only(top: 15),
-      this.iconSize = const Size(25, 29),
-      this.tap,
-      this.label});
+      this.iconSize = const Size(25, 29)});
 
   @override
   __BottomNavigationButtonState createState() =>
@@ -166,7 +171,6 @@ class __BottomNavigationButtonState extends State<_BottomNavigationButton> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Stack(
-                overflow: Overflow.visible,
                 children: [
                   Padding(
                     padding: widget.padding,

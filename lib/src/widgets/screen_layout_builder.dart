@@ -5,8 +5,8 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
   final Widget Function(BuildContext) buildMobile;
   final Widget Function(BuildContext) buildTablet;
 
-  const ResponsiveLayoutBuilder({Key key, this.buildMobile, this.buildTablet})
-      : super(key: key);
+  const ResponsiveLayoutBuilder(
+      {required this.buildMobile, required this.buildTablet});
 
   @override
   Widget build(BuildContext context) {

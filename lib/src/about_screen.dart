@@ -24,13 +24,14 @@ class AboutScreen extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: ButtonTheme(
                   minWidth: 0,
-                  child: FlatButton(
+                  child: Padding(
                     padding: const EdgeInsets.all(0),
-                    shape: null,
-                    onPressed: () => Navigator.pop(context, null),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
+                    child: TextButton(
+                      onPressed: () => Navigator.pop(context, null),
+                      child: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -67,7 +68,8 @@ class AboutScreen extends StatelessWidget {
                         const SizedBox(height: 23),
                         const Text(
                           'Flutter Developer Quest is built '
-                          'with Flutter by 2Dimensions.',
+                          'with Flutter by 2Dimensions.'
+                          'migrate to Flutter 3.13 by Tantrax007',
                           style: TextStyle(
                               fontFamily: 'RobotoRegular', fontSize: 20),
                         ),

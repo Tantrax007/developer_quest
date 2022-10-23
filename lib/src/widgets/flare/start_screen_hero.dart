@@ -1,11 +1,8 @@
 import 'dart:ui' as ui;
 
-import 'package:flare_dart/math/aabb.dart';
-import 'package:flare_dart/math/mat2d.dart';
 import 'package:flare_flutter/flare.dart';
 import 'package:flare_flutter/flare_render_box.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 /// Hero avatar for the start screen.
 /// Has a gradient across the bottom.
@@ -16,10 +13,10 @@ class StartScreenHero extends LeafRenderObjectWidget {
   final Color gradient;
 
   const StartScreenHero({
+    required this.filename,
+    required this.gradient,
     this.fit = BoxFit.contain,
     this.alignment = Alignment.center,
-    this.filename,
-    this.gradient,
   });
 
   @override

@@ -3,14 +3,16 @@ import 'package:dev_rpg/src/shared_state/game/character.dart';
 import 'package:dev_rpg/src/shared_state/game/skill.dart';
 import 'package:dev_rpg/src/widgets/flare/hiring_bust.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 /// Widget that shows the team that is actively working on a work item.
 class WorkTeam extends StatefulWidget {
   final List<Character> team;
   final List<Skill> skillsNeeded;
   final bool isComplete;
-  const WorkTeam({this.skillsNeeded, this.team, this.isComplete});
+  const WorkTeam(
+      {required this.skillsNeeded,
+      required this.team,
+      required this.isComplete});
   @override
   _WorkTeamState createState() => _WorkTeamState();
 }
@@ -39,11 +41,9 @@ class _WorkTeamState extends State<WorkTeam> {
   }
 
   void updateCharacterStyles() {
-    if (widget?.team == null) {
-      if (widget.isComplete) {
-        for (final _WorkTeamMember member in _workTeam) {
-          member.state = HiringBustState.success;
-        }
+    if (widget.isComplete) {
+      for (final _WorkTeamMember member in _workTeam) {
+        member.state = HiringBustState.success;
       }
       return;
     }
