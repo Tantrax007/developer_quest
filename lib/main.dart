@@ -13,7 +13,6 @@ import 'package:dev_rpg/src/style_sphinx/sphinx_screen.dart';
 import 'package:dev_rpg/src/welcome_screen.dart';
 import 'package:flare_flutter/flare_cache.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -36,14 +35,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(builder: (_) => User()),
-          ChangeNotifierProvider.value(notifier: world),
-          ChangeNotifierProvider.value(notifier: world.characterPool),
-          ChangeNotifierProvider.value(notifier: world.taskPool),
-          ChangeNotifierProvider.value(notifier: world.company),
-          ChangeNotifierProvider.value(notifier: world.company.users),
-          ChangeNotifierProvider.value(notifier: world.company.joy),
-          ChangeNotifierProvider.value(notifier: world.company.coin),
+          ChangeNotifierProvider(create: (_) => User()),
+          ChangeNotifierProvider.value(value: world),
+          ChangeNotifierProvider.value(value: world.characterPool),
+          ChangeNotifierProvider.value(value: world.taskPool),
+          ChangeNotifierProvider.value(value: world.company),
+          ChangeNotifierProvider.value(value: world.company.users),
+          ChangeNotifierProvider.value(value: world.company.joy),
+          ChangeNotifierProvider.value(value: world.company.coin),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
@@ -52,38 +51,33 @@ class _MyAppState extends State<MyApp> {
               primarySwatch: Colors.orange,
               canvasColor: Colors.transparent),
           routes: {
-            '/': (context) => WelcomeScreen(),
-            '/gameloop': (context) => GameScreen(),
-            '/about': (context) => AboutScreen(),
+            '/': (_) => WelcomeScreen(),
+            '/gameloop': (_) => GameScreen(),
+            '/about': (_) => AboutScreen(),
             CodeChomper.miniGameRouteName: (context) {
               String filename =
-                  ModalRoute.of(context).settings.arguments as String;
+                  ModalRoute.of(context)?.settings.arguments as String;
               return CodeChomper(filename);
             },
-            SphinxScreen.miniGameRouteName: (context) => const SphinxScreen(),
-            SphinxScreen.fullGameRouteName: (context) =>
+            SphinxScreen.miniGameRouteName: (_) => const SphinxScreen(),
+            SphinxScreen.fullGameRouteName: (_) =>
                 const SphinxScreen(fullGame: true),
-            ColumnQuestion.routeName: (context) => const ColumnQuestion(),
-            RowQuestion.routeName: (context) => const RowQuestion(),
-            StackQuestion.routeName: (context) => const StackQuestion(),
-            MainAxisCenterQuestion.routeName: (context) =>
-                const MainAxisCenterQuestion(),
-            MainAxisSpaceAroundQuestion.routeName: (context) =>
-                const MainAxisSpaceAroundQuestion(),
-            MainAxisSpaceBetweenQuestion.routeName: (context) =>
-                const MainAxisSpaceBetweenQuestion(),
-            MainAxisStartQuestion.routeName: (context) =>
-                const MainAxisStartQuestion(),
-            MainAxisEndQuestion.routeName: (context) =>
-                const MainAxisEndQuestion(),
-            MainAxisSpaceEvenlyQuestion.routeName: (context) =>
-                const MainAxisSpaceEvenlyQuestion(),
-            RowMainAxisEndQuestion.routeName: (context) =>
-                const RowMainAxisEndQuestion(),
-            RowMainAxisStartQuestion.routeName: (context) =>
-                const RowMainAxisStartQuestion(),
-            RowMainAxisSpaceBetween.routeName: (context) =>
-                const RowMainAxisSpaceBetween(),
+            ColumnQuestion.routeName: (_) => ColumnQuestion(),
+            RowQuestion.routeName: (_) => RowQuestion(),
+            StackQuestion.routeName: (_) => StackQuestion(),
+            MainAxisCenterQuestion.routeName: (_) => MainAxisCenterQuestion(),
+            MainAxisSpaceAroundQuestion.routeName: (_) =>
+                MainAxisSpaceAroundQuestion(),
+            MainAxisSpaceBetweenQuestion.routeName: (_) =>
+                MainAxisSpaceBetweenQuestion(),
+            MainAxisStartQuestion.routeName: (_) => MainAxisStartQuestion(),
+            MainAxisEndQuestion.routeName: (_) => MainAxisEndQuestion(),
+            MainAxisSpaceEvenlyQuestion.routeName: (_) =>
+                MainAxisSpaceEvenlyQuestion(),
+            RowMainAxisEndQuestion.routeName: (_) => RowMainAxisEndQuestion(),
+            RowMainAxisStartQuestion.routeName: (_) =>
+                RowMainAxisStartQuestion(),
+            RowMainAxisSpaceBetween.routeName: (_) => RowMainAxisSpaceBetween(),
           },
         ));
   }

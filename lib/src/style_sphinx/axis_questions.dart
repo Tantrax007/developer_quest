@@ -4,12 +4,9 @@ import 'package:dev_rpg/src/style_sphinx/kittens.dart';
 import 'package:dev_rpg/src/style_sphinx/question_scaffold.dart';
 import 'package:dev_rpg/src/style_sphinx/success_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MainAxisStartQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_1';
-
-  const MainAxisStartQuestion({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +24,6 @@ class MainAxisStartQuestion extends StatelessWidget {
 class MainAxisEndQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_2';
 
-  const MainAxisEndQuestion({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const _MainAxisQuestion(
@@ -44,8 +39,6 @@ class MainAxisEndQuestion extends StatelessWidget {
 
 class MainAxisCenterQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_3';
-
-  const MainAxisCenterQuestion({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +56,6 @@ class MainAxisCenterQuestion extends StatelessWidget {
 class MainAxisSpaceAroundQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_4';
 
-  const MainAxisSpaceAroundQuestion({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const _MainAxisQuestion(
@@ -80,8 +71,6 @@ class MainAxisSpaceAroundQuestion extends StatelessWidget {
 
 class MainAxisSpaceBetweenQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_5';
-
-  const MainAxisSpaceBetweenQuestion({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -99,8 +88,6 @@ class MainAxisSpaceBetweenQuestion extends StatelessWidget {
 class MainAxisSpaceEvenlyQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_6';
 
-  const MainAxisSpaceEvenlyQuestion({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const _MainAxisQuestion(
@@ -116,8 +103,6 @@ class MainAxisSpaceEvenlyQuestion extends StatelessWidget {
 
 class RowMainAxisStartQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_7';
-
-  const RowMainAxisStartQuestion({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -135,8 +120,6 @@ class RowMainAxisStartQuestion extends StatelessWidget {
 class RowMainAxisEndQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_8';
 
-  const RowMainAxisEndQuestion({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const _MainAxisQuestion(
@@ -152,8 +135,6 @@ class RowMainAxisEndQuestion extends StatelessWidget {
 
 class RowMainAxisSpaceBetween extends StatelessWidget {
   static const String routeName = '/sphinx/main_axis_question_9';
-
-  const RowMainAxisSpaceBetween({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

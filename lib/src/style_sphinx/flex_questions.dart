@@ -9,8 +9,6 @@ import 'package:flutter/widgets.dart';
 class ColumnQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/vertical_positioning';
 
-  const ColumnQuestion({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const _FlexQuestion(
@@ -26,8 +24,6 @@ class ColumnQuestion extends StatelessWidget {
 class RowQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/horizontal_positioning';
 
-  const RowQuestion({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const _FlexQuestion(
@@ -42,8 +38,6 @@ class RowQuestion extends StatelessWidget {
 
 class StackQuestion extends StatelessWidget {
   static const String routeName = '/sphinx/layer_widgets';
-
-  const StackQuestion({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
